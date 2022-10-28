@@ -1,0 +1,42 @@
+name: Python application testing
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Set variables depending on a branch
+      run: |
+          if [[ $GITHUB_REF == 'refs/heads/master' ]]; then
+              set ENV=prod
+              echo %ENV% 
+          else
+              set ENV=dev
+              echo %ENV% 
+          fi
+    - name: Test with python
+      run: |
+        python -m pytest --alluredir=test_results/ tests/
+        allure serve test_results/ 
