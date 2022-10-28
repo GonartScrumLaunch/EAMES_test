@@ -31,11 +31,9 @@ jobs:
     - name: Set variables depending on a branch
       run: |
           if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
-              export ENV=prod
-              echo $ENV 
+              echo "ENV=prod" >> $ENV
           else
-              export ENV=dev
-              echo $ENV 
+              echo "ENV=dev" >> $ENV
           fi
     - name: Test with python
       run: |
