@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        whereis allure
+        npm install -g allure-commandline --save-dev
     - name: Set variables depending on a branch
       run: |
           if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
@@ -40,4 +40,4 @@ jobs:
     - name: Test with python
       run: |
         python -m pytest --alluredir=test_results/ tests/
-        ./allure serve test_results/ 
+        allure serve test_results/ 
