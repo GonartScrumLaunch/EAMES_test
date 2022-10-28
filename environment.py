@@ -7,7 +7,7 @@ class Environment:
 
     URLS = {
         DEV: 'https://preprod-api.byshowroom.com',
-        PROD: 'https://miro.com/app/board/uXjVPZKYHTY=/'
+        PROD: 'https://api.byshowroom.com'
     }
 
     def __init__(self):
