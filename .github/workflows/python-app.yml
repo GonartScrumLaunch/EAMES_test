@@ -31,11 +31,12 @@ jobs:
     - name: Set variables depending on a branch
       run: |
           if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
-              echo "ENV=prod" >> $ENV
+              echo "prod" >> $ENV
           else
-              echo "ENV=dev" >> $ENV
+              echo "dev" >> $ENV
           fi
     - name: Test with python
       run: |
+        echo $ENV
         python -m pytest --alluredir=test_results/ tests/
      #  allure serve test_results/ #send reports to remote server instead of this
