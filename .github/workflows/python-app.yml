@@ -29,7 +29,7 @@ jobs:
         pip install -r requirements.txt
     - name: Set variables depending on a branch
       run: |
-          if [[ $GITHUB_REF == 'refs/heads/master' ]]; then
+          if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
               export ENV=prod
               echo $ENV 
           else
@@ -39,4 +39,4 @@ jobs:
     - name: Test with python
       run: |
         python -m pytest --alluredir=test_results/ tests/
-        allure serve test_results/ 
+        ./allure serve test_results/ 
