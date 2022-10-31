@@ -42,6 +42,7 @@ jobs:
         python -m pytest --alluredir=test_results/ tests/
   
     - name: Deploy test results to EC2 Allure
+      if: always()
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOSTNAME }}
