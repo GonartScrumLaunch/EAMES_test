@@ -39,7 +39,7 @@ jobs:
           fi
     - name: Test with python
       run: |
-        python -m pytest --alluredir=allure_results/ tests/
+        python -m pytest --alluredir=allure-results/ tests/
   
     - name: Deploy test results to EC2 Allure
       if: always()
@@ -48,6 +48,6 @@ jobs:
         host: ${{ secrets.HOSTNAME }}
         username: ${{ secrets.USER_NAME }}
         key: ${{ secrets.AWS_PRIVATE_KEY }}
-        source: "allure_results/*.json"
+        source: "allure-results/*"
        # rm: true
         target: "/var/allure/var/"
