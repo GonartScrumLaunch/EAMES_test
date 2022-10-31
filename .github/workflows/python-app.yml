@@ -48,5 +48,6 @@ jobs:
         host: ${{ secrets.HOSTNAME }}
         username: ${{ secrets.USER_NAME }}
         key: ${{ secrets.AWS_PRIVATE_KEY }}
-        source: "test_results/*"
+        source: "test_results/*.json"
+        rm: true
         target: "/var/allure/var/allure-results/"
