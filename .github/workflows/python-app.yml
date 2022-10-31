@@ -49,5 +49,5 @@ jobs:
         username: ${{ secrets.USER_NAME }}
         key: ${{ secrets.AWS_PRIVATE_KEY }}
         source: "allure_results/*.json"
-        rm: true
+       # rm: true
         target: "/var/allure/var/"
