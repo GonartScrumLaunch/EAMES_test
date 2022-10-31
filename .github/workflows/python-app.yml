@@ -40,4 +40,18 @@ jobs:
     - name: Test with python
       run: |
         python -m pytest --alluredir=test_results/ tests/
-     #  allure serve test_results/ #send reports to remote server instead of this
+  
+  
+  Deploy_test_results:
+    needs: run_tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Deploy in EC2 Allure
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          source: "test_results/*"
+          target: "/var/allure/var/allure-results/"
