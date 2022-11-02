@@ -16,7 +16,7 @@ class TestUserAuth(BaseCase):
                    }
         response1 = MyRequests.post("/v1/users/authenticate", data=payload, headers=x_app)
 
-        Assertions.assert_code_status(response1, 3200)
+        Assertions.assert_code_status(response1, 200)
         self.token = self.get_json_value(response1, "tokens")["access_token"]
         self.client = self.get_json_value(response1, "tokens")["client"]
         self.user_id_after_auth = self.get_json_value(response1, "user")["id"]
