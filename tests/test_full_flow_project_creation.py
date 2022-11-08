@@ -78,7 +78,6 @@ class TestCreateProject(BaseCase):
         Assertions.checking_required_field(response3, ['data', 'success'])
         Assertions.checking_required_value(response3, 'success', 'True')
         project_id = self.get_json_value(response3, 'data')['id']
-        print(project_id)
         response5 = MyRequests.post(f'/inventory/v1/projects/{project_id}/rooms', headers=self.headers,
                                     data=self.body_add_room)
         Assertions.assert_code_status(response5, 201)
