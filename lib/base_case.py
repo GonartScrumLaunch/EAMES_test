@@ -1,5 +1,6 @@
 from requests import Response
 import json.decoder
+from datetime import datetime
 
 """class of basic functions for multiple use in tests"""
 class BaseCase:
@@ -15,3 +16,12 @@ class BaseCase:
 
         assert name in response_as_dict, f"Response JSON doesn't have key '{name}'"
         return response_as_dict[name]
+
+    """Method for adding current date to project name"""
+    def project_name(self):
+        base_name = "Project "
+        current_date = datetime.utcnow().strftime("%Y-%m-%d")
+        current_date_to_sec = datetime.utcnow().strftime("%m-%d-%YT%H:%M:%S")
+        project_name = f"{base_name}{current_date_to_sec}"
+        return current_date, project_name, current_date_to_sec
+
