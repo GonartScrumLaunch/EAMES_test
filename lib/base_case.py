@@ -19,7 +19,7 @@ class BaseCase:
 
     """Method for adding current date to project name"""
     def project_name(self):
-        base_name = "Project "
+        base_name = "Test_project from "
         current_date = datetime.utcnow().strftime("%Y-%m-%d")
         current_date_to_sec = datetime.utcnow().strftime("%m-%d-%YT%H:%M:%S")
         project_name = f"{base_name}{current_date_to_sec}"
